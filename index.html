@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tortas, cóctel salado, boxes y mini dulces para celebrar en Puerto Montt. Cotiza con Sabor de Elis por WhatsApp.">
+  <meta name="theme-color" content="#5a3022">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sabor de Elis | Tortas, cóctel y dulces en Puerto Montt">
+  <meta property="og:description" content="Tortas, cóctel salado, boxes y mini dulces para celebrar. Retiro en Valle Volcanes, Puerto Montt, y delivery disponible.">
+  <meta property="og:site_name" content="Sabor de Elis">
+  <link rel="canonical" href="https://sabordeelis.github.io/">
+  <meta property="og:url" content="https://sabordeelis.github.io/">
+  <meta property="og:image" content="https://sabordeelis.github.io/assets/social/sabor-de-elis-social.jpeg">
+  <meta property="og:image:alt" content="Trabajo real de Sabor de Elis">
+  <meta name="twitter:card" content="summary">
+  <title>Sabor de Elis | Tortas, cóctel y dulces en Puerto Montt</title>
+  <style>
+    :root{
+      --cream:#fff8ed; --cream-2:#f8ecda; --paper:#fffdf8; --brown:#5a3022;
+      --brown-2:#7a4a36; --caramel:#d99642; --pink:#d78f9d; --pink-soft:#f5d7dc;
+      --muted:#806f66; --line:#ead6bf; --green:#1f9d59; --shadow:0 18px 50px rgba(90,48,34,.12);
+      --radius:24px; --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--brown);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;background-image:radial-gradient(circle at 15% 12%,rgba(215,143,157,.18),transparent 24%),radial-gradient(circle at 90% 20%,rgba(217,150,66,.15),transparent 22%),radial-gradient(circle at 50% 92%,rgba(122,74,54,.08),transparent 28%);z-index:-1}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
+    .skip{position:absolute;left:-9999px;top:8px;background:#fff;padding:10px;border-radius:8px;z-index:99}
+    .skip:focus{left:8px}
+    header{position:sticky;top:0;z-index:40;background:rgba(255,248,237,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,214,191,.8)}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;text-decoration:none;min-width:180px}
+    .brand img{height:58px;width:auto;mix-blend-mode:multiply}
+    nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+    nav a{text-decoration:none;font-weight:750;font-size:.93rem;padding:9px 12px;border-radius:999px}
+    nav a:hover,nav a:focus-visible{background:var(--pink-soft);outline:none}
+    .nav-cta{background:var(--brown);color:#fff!important}
+    .nav-cta:hover{background:var(--brown-2)!important}
+
+    .hero{padding:72px 0 48px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:800;color:var(--brown-2);box-shadow:0 6px 20px rgba(90,48,34,.06)}
+    .eyebrow::before{content:"♥";color:var(--pink)}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,7vw,6.25rem);line-height:.92;letter-spacing:-.055em;margin:22px 0 24px;max-width:760px}
+    h1 em{font-style:normal;color:var(--pink)}
+    .lead{font-size:clamp(1.05rem,2vw,1.28rem);color:var(--muted);max-width:650px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;border:0;border-radius:14px;padding:14px 19px;font-weight:850;cursor:pointer;transition:.2s transform,.2s box-shadow,.2s background}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--brown);color:#fff;box-shadow:0 12px 30px rgba(90,48,34,.2)}
+    .btn-secondary{background:#fff;color:var(--brown);border:1px solid var(--line)}
+    .hero-notes{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:.92rem}
+    .hero-notes span::before{content:"✓";font-weight:900;color:var(--green);margin-right:6px}
+    .hero-art{position:relative;min-height:520px}
+    .art-card{position:absolute;background:rgba(255,255,255,.82);border:1px solid rgba(234,214,191,.9);box-shadow:var(--shadow);backdrop-filter:blur(8px)}
+    .art-main{width:min(410px,80vw);aspect-ratio:1;right:6%;top:0;border-radius:50%;padding:18px;transform:rotate(3deg)}
+    .art-main img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .art-small{width:225px;aspect-ratio:1;left:0;bottom:2%;border-radius:50%;padding:12px;transform:rotate(-7deg)}
+    .art-small img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .floating-note{position:absolute;right:0;bottom:10%;max-width:225px;background:var(--brown);color:#fff;border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);transform:rotate(2deg)}
+    .floating-note strong{display:block;font-family:Georgia,serif;font-size:1.3rem;margin-bottom:3px}
+    .spark{position:absolute;color:var(--caramel);font-size:2rem;font-weight:900}
+    .spark.s1{right:4%;top:4%} .spark.s2{left:19%;top:5%;color:var(--pink)}
+
+    .strip{padding:18px 0 58px}
+    .strip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .strip-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+    .strip-icon{width:42px;height:42px;border-radius:14px;background:var(--pink-soft);display:grid;place-items:center;font-size:1.25rem;flex:none}
+    .strip-card strong{display:block;margin-bottom:3px}
+    .strip-card p{margin:0;color:var(--muted);font-size:.92rem}
+
+    section{padding:72px 0}
+    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:30px}
+    .kicker{text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:900;color:var(--pink)}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.15rem,4.5vw,4rem);line-height:1;margin:8px 0 10px;letter-spacing:-.03em}
+    .section-head p{margin:0;color:var(--muted);max-width:630px}
+    .section-alt{background:rgba(255,255,255,.55);border-block:1px solid rgba(234,214,191,.8)}
+    .search-wrap{position:relative;min-width:min(100%,340px)}
+    .search-wrap input{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px 16px 13px 42px;color:var(--brown)}
+    .search-wrap::before{content:"⌕";position:absolute;left:15px;top:7px;font-size:1.45rem;color:var(--muted)}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .menu-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 24px rgba(90,48,34,.05);display:flex;flex-direction:column;min-height:170px}
+    .menu-card:hover{box-shadow:0 14px 34px rgba(90,48,34,.1);transform:translateY(-2px);transition:.2s}
+    .menu-card__top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .menu-card h3{font-size:1.08rem;line-height:1.25;margin:0}
+    .menu-card p{color:var(--muted);margin:10px 0 18px;font-size:.93rem}
+    .price{white-space:nowrap;color:var(--caramel);font-weight:950}
+    .add-btn{margin-top:auto;align-self:flex-start;border:0;background:transparent;color:var(--pink);font-weight:850;padding:0;cursor:pointer}
+    .add-btn:hover{color:var(--brown)}
+    .empty{display:none;grid-column:1/-1;text-align:center;padding:30px;color:var(--muted)}
+
+    .boxes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .boxes-grid .menu-card{min-height:250px}
+    .boxes-grid .menu-card:nth-child(3){background:linear-gradient(155deg,#fff,var(--pink-soft))}
+
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .feature-card{border-radius:var(--radius);padding:28px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 28px rgba(90,48,34,.06)}
+    .feature-card.highlight{background:var(--brown);color:#fff;border-color:transparent}
+    .feature-card.highlight p,.feature-card.highlight li{color:#f1ded6}
+    .feature-card h3{font-family:Georgia,serif;font-size:2rem;margin:0 0 10px}
+    .feature-card p{color:var(--muted)}
+    .feature-card ul{padding-left:20px;color:var(--muted)}
+    .feature-card li{margin:6px 0}
+    .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+    .tag{display:inline-flex;padding:8px 11px;border-radius:999px;background:var(--cream-2);font-weight:800;font-size:.86rem}
+    .highlight .tag{background:rgba(255,255,255,.12);color:#fff}
+    .sweet-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .sweet-card{position:relative;overflow:hidden}
+    .sweet-card::after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;right:-55px;bottom:-65px;background:var(--pink-soft);opacity:.7}
+    .sweet-card .price-big{font-family:Georgia,serif;color:var(--caramel);font-weight:900;font-size:2.1rem}
+
+    .order-panel{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;background:linear-gradient(135deg,var(--brown),#784938);border-radius:32px;padding:clamp(24px,5vw,50px);color:#fff;box-shadow:var(--shadow)}
+    .order-panel h2{margin-top:0}
+    .order-panel p{color:#f0ded6}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(255,255,255,.1);padding:20px;border-radius:22px;border:1px solid rgba(255,255,255,.13)}
+    label{font-size:.84rem;font-weight:850;display:block;margin-bottom:6px}
+    .field.full{grid-column:1/-1}
+    select,input,textarea{width:100%;border:1px solid rgba(90,48,34,.14);border-radius:12px;padding:12px 13px;background:#fff;color:var(--brown);outline:none}
+    textarea{resize:vertical;min-height:92px}
+    select:focus,input:focus,textarea:focus{box-shadow:0 0 0 3px rgba(215,143,157,.32)}
+    .order-submit{grid-column:1/-1;background:var(--pink);color:#fff;width:100%}
+    .order-submit:hover{background:#c77888}
+
+    footer{padding:44px 0 26px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:24px;align-items:start}
+    .footer-logo{width:260px;mix-blend-mode:multiply}
+    footer h3{margin:0 0 10px}
+    footer p,footer a{color:var(--muted)}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{text-decoration:none}
+    .footer-links a:hover{color:var(--brown)}
+    .copyright{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;color:var(--muted);font-size:.86rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+    .wa-float{position:fixed;right:20px;bottom:20px;z-index:50;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;text-decoration:none;font-size:1.55rem;font-weight:900;box-shadow:0 10px 28px rgba(24,145,76,.35);border:3px solid #fff}
+    .wa-float:hover{transform:scale(1.06)}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--brown);color:#fff;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:60;box-shadow:var(--shadow)}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media (max-width:980px){
+      nav a:not(.nav-cta){display:none}
+      .hero-grid,.order-panel{grid-template-columns:1fr}
+      .hero-art{min-height:460px;max-width:620px;margin-inline:auto;width:100%}
+      .menu-grid{grid-template-columns:repeat(2,1fr)}
+      .boxes-grid{grid-template-columns:repeat(2,1fr)}
+      .strip-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .container{width:min(calc(100% - 22px),var(--max))}
+      .nav{height:68px} .brand img{height:48px} .nav-cta{font-size:.82rem;padding:9px 11px}
+      .hero{padding-top:44px} h1{font-size:3.35rem}
+      .hero-art{min-height:380px}
+      .art-main{width:290px;right:2%} .art-small{width:175px;bottom:0} .floating-note{font-size:.82rem;right:0;bottom:4%;max-width:180px}
+      section{padding:56px 0}
+      .section-head{display:block}
+      .search-wrap{margin-top:18px}
+      .menu-grid,.boxes-grid,.feature-grid,.sweet-grid,.footer-grid{grid-template-columns:1fr}
+      .boxes-grid .menu-card{min-height:170px}
+      form{grid-template-columns:1fr}
+      .field.full,.order-submit{grid-column:1}
+      .wa-float{right:14px;bottom:14px}
+    }
+    @media print{
+      header,.hero-actions,.add-btn,.wa-float,.order-panel,.search-wrap{display:none!important}
+      body{background:#fff} section{padding:30px 0} .menu-card{break-inside:avoid;box-shadow:none}
+    }
+  
+    .quick-access{padding:0 0 56px}.quick-access__box{background:var(--brown);color:#fff;border-radius:28px;padding:30px;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}.quick-access h2{margin:6px 0;font-family:Georgia,serif;font-size:2rem}.quick-access p{margin:0;color:#f0ded6}.quick-access__actions{display:flex;gap:9px;flex-wrap:wrap}.quick-category{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:10px 14px;font-weight:800}.gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.gallery-item{margin:0;overflow:hidden;border-radius:18px;aspect-ratio:4/5}.gallery-item img{width:100%;height:100%;object-fit:cover}.instagram-banner{padding-top:0}.instagram-banner__box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:22px}.instagram-banner__box h2{margin:6px 0;font-size:2rem}.instagram-banner__box p{margin:0;color:var(--muted)}.wa-float{width:auto;height:58px;border-radius:999px;padding:0 18px;font-size:.95rem}@media (max-width:980px){.quick-access__box{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(3,1fr)}}@media (max-width:640px){.gallery-grid{grid-template-columns:repeat(2,1fr)}.instagram-banner__box{display:block}.instagram-banner__box .btn{margin-top:18px;width:100%}}
+  
+    .gallery-item{border:0;padding:0;width:100%;cursor:zoom-in}.gallery-item:focus-visible{outline:3px solid var(--pink);outline-offset:3px}.image-dialog{border:0;padding:0;border-radius:22px;background:transparent;max-width:min(92vw,720px);box-shadow:0 24px 70px rgba(0,0,0,.35)}.image-dialog::backdrop{background:rgba(52,29,22,.76)}.image-dialog__content{position:relative;background:var(--paper);border-radius:22px;overflow:hidden}.image-dialog img{max-width:100%;max-height:80vh;width:auto;height:auto;object-fit:contain}.image-dialog__close{position:absolute;z-index:1;right:12px;top:12px;width:42px;height:42px;border:0;border-radius:50%;background:var(--brown);color:#fff;font-size:1.65rem;line-height:1;cursor:pointer}.image-dialog__close:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio de Sabor de Elis"><img src="assets/branding/catalogo-incrustado-01.webp" alt="Sabor de Elis"></a>
+      <nav aria-label="Navegación principal">
+        <a href="#salado">Cóctel</a><a href="#boxes">Boxes</a><a href="#dulces">Dulces</a><a href="#tortas">Tortas</a>
+        <a class="nav-cta" href="#pedido">Hacer pedido</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Hecho para celebrar</span>
+          <h1>Sabores que hacen cada momento más <em>especial</em>.</h1>
+          <p class="lead">Cóctel salado, mini dulces, boxes para fiestas y tortas preparadas con cariño. Elige tu opción favorita y cotiza directamente por WhatsApp.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/56938797384?text=Hola%20Sabor%20de%20Elis%2C%20quisiera%20cotizar%20un%20pedido." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+            <a class="btn btn-secondary" href="#salado">Ver el menú</a>
+          </div>
+          <div class="hero-notes"><span>Opciones dulces y saladas</span><span>Combinaciones personalizadas</span><span>Retiro en Valle Volcanes, Puerto Montt</span><span>Delivery disponible</span></div>
+        </div>
+        <div class="hero-art" aria-label="Selección de productos de Sabor de Elis">
+          <span class="spark s1">✦</span><span class="spark s2">♥</span>
+          <div class="art-card art-main"><img src="assets/branding/catalogo-incrustado-02.webp" alt="Torta decorada"></div>
+          <div class="art-card art-small"><img src="assets/branding/catalogo-incrustado-03.webp" alt="Bandeja de pasapalos salados"></div>
+          <div class="floating-note"><strong>Dulce + salado</strong>Todo para compartir en una sola marca.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="container strip-grid">
+        <div class="strip-card"><div class="strip-icon">🎉</div><div><strong>Para celebraciones</strong><p>Cumpleaños, reuniones, eventos y ocasiones especiales.</p></div></div>
+        <div class="strip-card"><div class="strip-icon">🧁</div><div><strong>Variedad de sabores</strong><p>Elige rellenos, presentaciones y combinaciones según el menú.</p></div></div>
+        <div class="strip-card"><div class="strip-icon">💬</div><div><strong>Cotización rápida</strong><p>Arma tu solicitud y envíala directamente por WhatsApp.</p></div></div>
+      </div>
+    </div>
+
+    <section class="quick-access" aria-labelledby="quick-title"><div class="container"><div class="quick-access__box"><div><span class="kicker" style="color:#f2b9c4">Elige lo que buscas</span><h2 id="quick-title">Cotiza por categoría</h2><p>Selecciona una categoría para ver sus opciones y cotizar por WhatsApp.</p></div><div class="quick-access__actions"><a class="quick-category" href="#tortas">Tortas</a><a class="quick-category" href="#salado">Cóctel</a><a class="quick-category" href="#boxes">Boxes</a><a class="quick-category" href="#dulces">Dulces</a></div></div></div></section>
+    <section id="salado" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="kicker">Menú salado</span><h2>Cóctel salado</h2><p>Opciones individuales para armar una mesa variada. Busca por nombre, cantidad o precio.</p></div>
+          <div class="search-wrap"><input id="menuSearch" type="search" placeholder="Buscar en el menú..." aria-label="Buscar productos del menú salado"></div>
+        </div>
+        <div class="menu-grid" id="saltyGrid"><article class="menu-card searchable" data-search="tequeños 50 unidades $21.000">
+          <div class="menu-card__top"><h3>Tequeños</h3><span class="price">$21.000</span></div>
+          <p>50 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Tequeños">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="pastelitos 50 unidades $21.000">
+          <div class="menu-card__top"><h3>Pastelitos</h3><span class="price">$21.000</span></div>
+          <p>50 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Pastelitos">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="empanadas 50 unidades $24.000">
+          <div class="menu-card__top"><h3>Empanadas</h3><span class="price">$24.000</span></div>
+          <p>50 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Empanadas">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="arepitas 50 unidades $24.000">
+          <div class="menu-card__top"><h3>Arepitas</h3><span class="price">$24.000</span></div>
+          <p>50 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Arepitas">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="cachapitas 30 unidades $23.000">
+          <div class="menu-card__top"><h3>Cachapitas</h3><span class="price">$23.000</span></div>
+          <p>30 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Cachapitas">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="bolitas de carne 30 unidades $19.000">
+          <div class="menu-card__top"><h3>Bolitas de carne</h3><span class="price">$19.000</span></div>
+          <p>30 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Bolitas de carne">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="serpentinas 40 unidades $19.000">
+          <div class="menu-card__top"><h3>Serpentinas</h3><span class="price">$19.000</span></div>
+          <p>40 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Serpentinas">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="brocheta de pollo 30 unidades · morrón y cebolla $20.990">
+          <div class="menu-card__top"><h3>Brocheta de pollo</h3><span class="price">$20.990</span></div>
+          <p>30 unidades · morrón y cebolla</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Brocheta de pollo">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="brocheta de vacuno 30 unidades · morrón y cebolla $23.990">
+          <div class="menu-card__top"><h3>Brocheta de vacuno</h3><span class="price">$23.990</span></div>
+          <p>30 unidades · morrón y cebolla</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Brocheta de vacuno">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mini pizzas 30 unidades $16.500">
+          <div class="menu-card__top"><h3>Mini pizzas</h3><span class="price">$16.500</span></div>
+          <p>30 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Mini pizzas">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mini hamburguesas 20 unidades $24.000">
+          <div class="menu-card__top"><h3>Mini hamburguesas</h3><span class="price">$24.000</span></div>
+          <p>20 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Mini hamburguesas">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mini completos 20 unidades $20.000">
+          <div class="menu-card__top"><h3>Mini completos</h3><span class="price">$20.000</span></div>
+          <p>20 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Mini completos">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mini hot dogs 20 unidades $20.000">
+          <div class="menu-card__top"><h3>Mini hot dogs</h3><span class="price">$20.000</span></div>
+          <p>20 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Mini hot dogs">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="tamales 50 unidades $14.990">
+          <div class="menu-card__top"><h3>Tamales</h3><span class="price">$14.990</span></div>
+          <p>50 unidades</p>
+          <button class="add-btn" type="button" data-category="Cóctel salado" data-product="Tamales">Agregar al pedido</button>
+        </article><div class="empty" id="emptyState">No encontramos productos con esa búsqueda.</div></div>
+      </div>
+    </section>
+
+    <section id="boxes">
+      <div class="container">
+        <div class="section-head"><div><span class="kicker">Listos para compartir</span><h2>Box mixtos</h2><p>Combinaciones pensadas para distintos tamaños de celebración. También puedes consultar por cambios personalizados.</p></div></div>
+        <div class="boxes-grid"><article class="menu-card searchable" data-search="mix 50 unidades tequeños, pastelitos y empanadas $25.000">
+          <div class="menu-card__top"><h3>Mix 50 unidades</h3><span class="price">$25.000</span></div>
+          <p>Tequeños, pastelitos y empanadas</p>
+          <button class="add-btn" type="button" data-category="Box mixtos" data-product="Mix 50 unidades">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mix 70 unidades tequeños, pastelitos, empanadas, mandocas y arepas $39.000">
+          <div class="menu-card__top"><h3>Mix 70 unidades</h3><span class="price">$39.000</span></div>
+          <p>Tequeños, pastelitos, empanadas, mandocas y arepas</p>
+          <button class="add-btn" type="button" data-category="Box mixtos" data-product="Mix 70 unidades">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mix 100 unidades tequeños, pastelitos, empanadas, mandocas, arepas y cachapas $49.500">
+          <div class="menu-card__top"><h3>Mix 100 unidades</h3><span class="price">$49.500</span></div>
+          <p>Tequeños, pastelitos, empanadas, mandocas, arepas y cachapas</p>
+          <button class="add-btn" type="button" data-category="Box mixtos" data-product="Mix 100 unidades">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mix 150 unidades tequeños, pastelitos, empanadas, mandocas, arepas, bolitas de carne y cachapas $70.000">
+          <div class="menu-card__top"><h3>Mix 150 unidades</h3><span class="price">$70.000</span></div>
+          <p>Tequeños, pastelitos, empanadas, mandocas, arepas, bolitas de carne y cachapas</p>
+          <button class="add-btn" type="button" data-category="Box mixtos" data-product="Mix 150 unidades">Agregar al pedido</button>
+        </article>
+<article class="menu-card searchable" data-search="mix 200 unidades tequeños, pastelitos, empanadas, mandocas, arepas, bolitas de carne, cachapas, tamales y pizzas $98.000">
+          <div class="menu-card__top"><h3>Mix 200 unidades</h3><span class="price">$98.000</span></div>
+          <p>Tequeños, pastelitos, empanadas, mandocas, arepas, bolitas de carne, cachapas, tamales y pizzas</p>
+          <button class="add-btn" type="button" data-category="Box mixtos" data-product="Mix 200 unidades">Agregar al pedido</button>
+        </article></div>
+      </div>
+    </section>
+
+    <section id="dulces" class="section-alt">
+      <div class="container">
+        <div class="section-head"><div><span class="kicker">El toque dulce</span><h2>Mini dulces</h2><p>Formatos variados para mesas de postres, cumpleaños y reuniones.</p></div></div>
+        <div class="sweet-grid">
+          <article class="feature-card sweet-card">
+            <span class="kicker">24 unidades · Elige 3 sabores</span>
+            <h3>Mini shots</h3><div class="price-big">$25.000</div>
+            <p>Tres leches, pie de limón, chocolate, cheesecake, tiramisú, arroz con leche o mini quesillo (leche asada).</p>
+            <button class="add-btn" type="button" data-category="Mini dulces" data-product="Mini shots · 24 unidades">Agregar al pedido</button>
+          </article>
+          <article class="feature-card sweet-card">
+            <span class="kicker">50 unidades · Elige 4 variedades</span>
+            <h3>Mini dulces</h3><div class="price-big">$40.000</div>
+            <p>Brownies, cupcakes, cake pops, tartaletas, mini pie de limón, mini alfajores, mini quesillos o trufas.</p>
+            <button class="add-btn" type="button" data-category="Mini dulces" data-product="Mini dulces · 50 unidades">Agregar al pedido</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabajos" class="section-alt" aria-labelledby="gallery-title"><div class="container"><div class="section-head"><div><span class="kicker">Hecho por Sabor de Elis</span><h2 id="gallery-title">Nuestros trabajos</h2><p>Trabajos reales. La estructura está preparada para clasificar próximas fotos en Tortas, Cóctel, Boxes y Dulces.</p></div></div><div class="gallery-grid"><button class="gallery-item" type="button" data-category="sin-clasificar" data-full="assets/galeria/sin-clasificar/trabajo-01.jpeg" aria-label="Ampliar trabajo real de Sabor de Elis"><img src="assets/galeria/sin-clasificar/trabajo-01.jpeg" alt="Trabajo real de Sabor de Elis" loading="lazy"></button></div></div></section>
+    <section id="tortas">
+      <div class="container">
+        <div class="section-head"><div><span class="kicker">Tortas para cada ocasión</span><h2>Personalizadas y clásicas</h2><p>Disponibles para 10, 15, 20, 25, 30 o 40 personas. El valor se confirma según tamaño, sabores y diseño.</p></div></div>
+        <div class="feature-grid">
+          <article class="feature-card highlight">
+            <span class="kicker" style="color:#f2b9c4">A tu estilo</span><h3>Tortas personalizadas</h3>
+            <p>Incluyen bizcocho, dos rellenos y temática personalizada. Cotiza el diseño según tu celebración.</p>
+            <ul><li>Bizcocho y dos rellenos a elección.</li><li>Coberturas: buttercream, merengue suizo o chantilly.</li><li>Opciones adicionales como pistacho o Nutella.</li></ul>
+            <div class="tag-row"><span class="tag">10 personas</span><span class="tag">15 personas</span><span class="tag">20 personas</span><span class="tag">25 personas</span><span class="tag">30 personas</span><span class="tag">40 personas</span></div>
+            <button class="add-btn" style="color:#f3bbc6;margin-top:22px" type="button" data-category="Tortas personalizadas" data-product="Torta para 20 personas">Cotizar una torta</button>
+          </article>
+          <article class="feature-card">
+            <span class="kicker">Formato definido</span><h3>Tortas clásicas</h3>
+            <p>Tortas de elaboración rápida, sin personalización temática y con precio según tamaño.</p>
+            <ul><li><strong>Tradicionales:</strong> tres leches, piña e imperial.</li><li><strong>Frutales y suaves:</strong> tarta de frutas, quesillo y quesipiña.</li><li><strong>Especiales:</strong> beso de ángel, chocobrownie y chocomoka.</li></ul>
+            <div class="tag-row"><span class="tag">Precio según tamaño</span><span class="tag">Presentación clásica</span></div>
+            <button class="add-btn" style="margin-top:22px" type="button" data-category="Tortas clásicas" data-product="Torta tres leches">Agregar al pedido</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pedido" class="section-alt">
+      <div class="container">
+        <div class="order-panel">
+          <div><span class="kicker" style="color:#f2b9c4">Pedido rápido</span><h2>Cuéntanos qué necesitas</h2><p>Completa los datos principales. Al presionar el botón se abrirá WhatsApp con tu solicitud preparada para enviar.</p><p><strong>WhatsApp:</strong><br>+56 9 3879 7384</p></div>
+          <form id="orderForm">
+            <div class="field"><label for="customerName">Tu nombre</label><input id="customerName" autocomplete="name" placeholder="Ej.: Héctor"></div>
+            <div class="field"><label for="eventDate">Fecha del evento</label><input id="eventDate" type="date"></div>
+            <div class="field"><label for="category">Categoría</label><select id="category"></select></div>
+            <div class="field"><label for="product">Producto</label><select id="product"></select></div>
+            <div class="field"><label for="quantity">Cantidad</label><input id="quantity" type="number" min="1" value="1"></div>
+            <div class="field"><label for="people">Cantidad de personas</label><input id="people" type="number" min="1" placeholder="Opcional"></div>
+            <div class="field"><label for="fulfillment">¿Cómo prefieres recibirlo?</label><select id="fulfillment"><option value="Retiro en Valle Volcanes, Puerto Montt">Retiro en Valle Volcanes, Puerto Montt</option><option value="Delivery">Delivery</option></select></div>
+            <div class="field full"><label for="notes">Detalles o sabores</label><textarea id="notes" placeholder="Ej.: temática, sabores, cambios en el box o cualquier consulta."></textarea></div>
+            <button class="btn order-submit" type="submit">Enviar solicitud por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="instagram-banner" aria-labelledby="instagram-title"><div class="container"><div class="instagram-banner__box"><div><span class="kicker">Más inspiración</span><h2 id="instagram-title">Síguenos en Instagram</h2><p>Revisa más preparaciones y novedades de Sabor de Elis en @sabordeelis.</p></div><a class="btn btn-primary" href="https://instagram.com/sabordeelis" target="_blank" rel="noopener">Ver Instagram</a></div></div></section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><img class="footer-logo" src="assets/branding/catalogo-incrustado-04.webp" alt="Sabor de Elis"><p>Opciones dulces y saladas para compartir, celebrar y disfrutar.</p></div>
+        <div><h3>Contacto</h3><div class="footer-links"><a href="https://wa.me/56938797384" target="_blank" rel="noopener">WhatsApp · +56 9 3879 7384</a><a href="https://instagram.com/sabordeelis" target="_blank" rel="noopener">Instagram · @sabordeelis</a><a href="https://www.tiktok.com/@sabordeelis" target="_blank" rel="noopener">TikTok · @sabordeelis</a></div></div>
+        <div><h3>Información</h3><div class="footer-links"><a href="#salado">Cóctel salado</a><a href="#boxes">Box mixtos</a><a href="#dulces">Mini dulces</a><a href="#tortas">Tortas</a></div></div>
+      </div>
+      <div class="copyright"><span>© <span id="year"></span> Sabor de Elis.</span><span>Valores y disponibilidad sujetos a confirmación al realizar el pedido.</span></div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/56938797384?text=Hola%20Sabor%20de%20Elis%2C%20quisiera%20hacer%20un%20pedido." target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">WhatsApp</a>
+  <div class="toast" id="toast" role="status" aria-live="polite">Producto agregado al pedido</div>
+
+  <dialog class="image-dialog" id="imageDialog" aria-label="Imagen ampliada"><div class="image-dialog__content"><button class="image-dialog__close" id="closeImageDialog" type="button" aria-label="Cerrar imagen">×</button><img id="imageDialogImage" src="" alt=""></div></dialog>
+
+  <script>
+    const products = {"Cóctel salado": ["Tequeños", "Pastelitos", "Empanadas", "Arepitas", "Cachapitas", "Bolitas de carne", "Serpentinas", "Brocheta de pollo", "Brocheta de vacuno", "Mini pizzas", "Mini hamburguesas", "Mini completos", "Mini hot dogs", "Tamales"], "Box mixtos": ["Mix 50 unidades", "Mix 70 unidades", "Mix 100 unidades", "Mix 150 unidades", "Mix 200 unidades"], "Mini dulces": ["Mini shots · 24 unidades", "Mini dulces · 50 unidades"], "Tortas personalizadas": ["Torta para 10 personas", "Torta para 15 personas", "Torta para 20 personas", "Torta para 25 personas", "Torta para 30 personas", "Torta para 40 personas"], "Tortas clásicas": ["Torta tres leches", "Torta de piña", "Torta imperial", "Tarta de frutas", "Quesillo", "Quesipiña", "Beso de ángel", "Chocobrownie", "Chocomoka"]};
+    const category = document.getElementById('category');
+    const product = document.getElementById('product');
+    const toast = document.getElementById('toast');
+
+    function fillCategories() {
+      category.innerHTML = Object.keys(products).map(x => `<option value="${x}">${x}</option>`).join('');
+      fillProducts();
+    }
+    function fillProducts(selected) {
+      const list = products[category.value] || [];
+      product.innerHTML = list.map(x => `<option value="${x}">${x}</option>`).join('');
+      if (selected && list.includes(selected)) product.value = selected;
+    }
+    category.addEventListener('change', () => fillProducts());
+    fillCategories();
+
+    document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', () => {
+      category.value = btn.dataset.category;
+      fillProducts(btn.dataset.product);
+      document.getElementById('pedido').scrollIntoView({behavior:'smooth'});
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    }));
+
+    document.querySelectorAll(".quick-category").forEach(link => link.addEventListener("click", event => {
+      event.preventDefault();
+      const categoryMap = {"#tortas": ["Tortas personalizadas", "Torta para 20 personas"], "#salado": ["Cóctel salado", "Tequeños"], "#boxes": ["Box mixtos", "Mix 50 unidades"], "#dulces": ["Mini dulces", "Mini shots · 24 unidades"]};
+      const selection = categoryMap[link.getAttribute("href")];
+      if (selection) { category.value = selection[0]; fillProducts(selection[1]); }
+      document.querySelector(link.getAttribute("href")).scrollIntoView({behavior:"smooth"});
+    }));
+
+    const imageDialog = document.getElementById("imageDialog");
+    const imageDialogImage = document.getElementById("imageDialogImage");
+    document.querySelectorAll(".gallery-item").forEach(item => item.addEventListener("click", () => {
+      imageDialogImage.src = item.dataset.full;
+      imageDialogImage.alt = item.querySelector("img").alt;
+      imageDialog.showModal();
+    }));
+    document.getElementById("closeImageDialog").addEventListener("click", () => imageDialog.close());
+    imageDialog.addEventListener("click", event => { if (event.target === imageDialog) imageDialog.close(); });
+
+    const search = document.getElementById('menuSearch');
+    const cards = [...document.querySelectorAll('#saltyGrid .searchable')];
+    const emptyState = document.getElementById('emptyState');
+    search.addEventListener('input', () => {
+      const term = search.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const match = card.dataset.search.includes(term);
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      emptyState.style.display = visible ? 'none' : 'block';
+    });
+
+    document.getElementById('orderForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('customerName').value.trim();
+      const date = document.getElementById('eventDate').value;
+      const qty = document.getElementById('quantity').value || '1';
+      const people = document.getElementById('people').value.trim();
+      const fulfillment = document.getElementById('fulfillment').value;
+      const notes = document.getElementById('notes').value.trim();
+      const lines = [
+        'Hola Sabor de Elis, quisiera solicitar una cotización:',
+        '',
+        `Nombre: ${name || 'No indicado'}`,
+        `Categoría: ${category.value}`,
+        `Producto: ${product.value}`,
+        `Cantidad: ${qty}`,
+        `Fecha del evento: ${date || 'Por confirmar'}`,
+        "Cantidad de personas: " + (people || "Por confirmar"),
+        "Entrega: " + fulfillment,
+        `Detalles: ${notes || 'Sin detalles adicionales'}`
+      ];
+      window.open('https://wa.me/56938797384?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

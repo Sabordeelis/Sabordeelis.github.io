@@ -1,0 +1,12 @@
+.env
+.env.*
+*.bak
+backups/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+panel-interno/
+*.db
+*.sqlite3
+uploads/
