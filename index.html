@@ -128,6 +128,8 @@
     .order-summary__title{margin:0 0 6px;font-size:1rem}
     .order-summary__items{margin:0;padding-left:18px;color:#f0ded6;font-size:.93rem}
     .order-summary__items li+li{margin-top:3px}
+    .field.is-hidden{display:none}
+    .cake-builder{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.cake-builder .field{margin:0}.cake-builder .full,.cake-builder .cake-note,.cake-builder #cakeSubmit{grid-column:1/-1}.cake-fillings{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;font-size:.9rem}.cake-fillings label{font-weight:600;margin:0}.cake-note{color:#f1ded6!important;font-size:.88rem;margin:0!important}
     form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(255,255,255,.1);padding:20px;border-radius:22px;border:1px solid rgba(255,255,255,.13)}
     label{font-size:.84rem;font-weight:850;display:block;margin-bottom:6px}
     .field.full{grid-column:1/-1}
@@ -171,7 +173,7 @@
       section{padding:56px 0}
       .section-head{display:block}
       .search-wrap{margin-top:18px}
-      .menu-grid,.boxes-grid,.feature-grid,.sweet-grid,.footer-grid{grid-template-columns:1fr}
+      .menu-grid,.boxes-grid,.feature-grid,.sweet-grid,.footer-grid,.cake-builder{grid-template-columns:1fr}
       .boxes-grid .menu-card{min-height:170px}
       form{grid-template-columns:1fr}
       .field.full,.order-submit{grid-column:1}
@@ -193,7 +195,7 @@
     <div class="container nav">
       <a class="brand" href="#inicio" aria-label="Ir al inicio de Sabor de Elis"><img src="assets/branding/catalogo-incrustado-01.webp" alt="Sabor de Elis"></a>
       <nav aria-label="Navegación principal">
-        <a href="#salado">Cóctel</a><a href="#boxes">Boxes</a><a href="#dulces">Dulces</a><a href="#tortas">Tortas</a>
+        <a href="#salado">Cóctel</a><a href="#boxes">Box</a><a href="#dulces">Dulces</a><a href="#tortas">Tortas</a>
         <a class="nav-cta" href="#pedido">Hacer pedido</a>
       </nav>
     </div>
@@ -206,7 +208,7 @@
         <div>
           <span class="eyebrow">Hecho para celebrar</span>
           <h1>Sabores que hacen cada momento más <em>especial</em>.</h1>
-          <p class="lead">Cóctel salado, mini dulces, boxes para fiestas y tortas preparadas con cariño. Elige tu opción favorita y cotiza directamente por WhatsApp.</p>
+          <p class="lead">Cóctel salado, mini dulces, box para fiestas y tortas preparadas con cariño. Elige tu opción favorita y cotiza directamente por WhatsApp.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://wa.me/56938797384?text=Hola%20Sabor%20de%20Elis%2C%20quisiera%20cotizar%20un%20pedido." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
             <a class="btn btn-secondary" href="#salado">Ver el menú</a>
@@ -217,20 +219,12 @@
           <span class="spark s1">✦</span><span class="spark s2">♥</span>
           <div class="art-card art-main"><img src="assets/branding/catalogo-incrustado-02.webp" alt="Torta decorada"></div>
           <div class="art-card art-small"><img src="assets/branding/catalogo-incrustado-03.webp" alt="Bandeja de pasapalos salados"></div>
-          <div class="floating-note"><strong>Dulce + salado</strong>Todo para compartir en una sola marca.</div>
+          <div class="floating-note"><strong>Pedidos para celebraciones</strong>Retiro + Delivery</div>
         </div>
       </div>
     </section>
 
-    <div class="strip">
-      <div class="container strip-grid">
-        <div class="strip-card"><div class="strip-icon">🎉</div><div><strong>Para celebraciones</strong><p>Cumpleaños, reuniones, eventos y ocasiones especiales.</p></div></div>
-        <div class="strip-card"><div class="strip-icon">🧁</div><div><strong>Variedad de sabores</strong><p>Elige rellenos, presentaciones y combinaciones según el menú.</p></div></div>
-        <div class="strip-card"><div class="strip-icon">💬</div><div><strong>Cotización rápida</strong><p>Arma tu solicitud y envíala directamente por WhatsApp.</p></div></div>
-      </div>
-    </div>
-
-    <section class="quick-access" aria-labelledby="quick-title"><div class="container"><div class="quick-access__box"><div><span class="kicker" style="color:#f2b9c4">Elige lo que buscas</span><h2 id="quick-title">Cotiza por categoría</h2><p>Selecciona una categoría para ver sus opciones y cotizar por WhatsApp.</p></div><div class="quick-access__actions"><a class="quick-category" href="#tortas">Tortas</a><a class="quick-category" href="#salado">Cóctel</a><a class="quick-category" href="#boxes">Boxes</a><a class="quick-category" href="#dulces">Dulces</a></div></div></div></section>
+    <section class="quick-access" aria-labelledby="quick-title"><div class="container"><div class="quick-access__box"><div><span class="kicker" style="color:#f2b9c4">Elige lo que buscas</span><h2 id="quick-title">Cotiza por categoría</h2><p>Selecciona una categoría para ver sus opciones y cotizar por WhatsApp.</p></div><div class="quick-access__actions"><a class="quick-category" href="#tortas">Tortas</a><a class="quick-category" href="#salado">Cóctel</a><a class="quick-category" href="#boxes">Box</a><a class="quick-category" href="#dulces">Dulces</a></div></div></div></section>
     <section id="salado" class="section-alt">
       <div class="container">
         <div class="section-head">
@@ -367,11 +361,9 @@
         <div class="section-head"><div><span class="kicker">Tortas para cada ocasión</span><h2>Personalizadas y clásicas</h2><p>Disponibles para 10, 15, 20, 25, 30 o 40 personas. El valor se confirma según tamaño, sabores y diseño.</p></div></div>
         <div class="feature-grid">
           <article class="feature-card highlight">
-            <span class="kicker" style="color:#f2b9c4">A tu estilo</span><h3>Tortas personalizadas</h3>
-            <p>Desde $39.000. Incluyen bizcocho, dos rellenos y temática personalizada. Cotiza el diseño según tu celebración.</p>
-            <ul><li>Bizcocho y dos rellenos a elección.</li><li>Coberturas: buttercream, merengue suizo o chantilly.</li><li>Opciones adicionales como pistacho o Nutella.</li></ul>
-            <div class="tag-row"><span class="tag">10 personas</span><span class="tag">15 personas</span><span class="tag">20 personas</span><span class="tag">25 personas</span><span class="tag">30 personas</span><span class="tag">40 personas</span></div>
-            <button class="add-btn" style="color:#f3bbc6;margin-top:22px" type="button" data-category="Tortas personalizadas" data-product="Torta para 20 personas">Cotizar una torta</button>
+            <span class="kicker" style="color:#f2b9c4">A tu estilo</span><h3>Arma tu torta</h3>
+            <p>Elige los detalles de tu torta personalizada y confirma valor y disponibilidad por WhatsApp.</p>
+            <div class="cake-builder" id="cakeBuilder"><div class="field"><label for="cakeSize">Tamaño</label><select id="cakeSize"><option value="">Selecciona tamaño</option><option>10 personas</option><option>15 personas</option><option>20 personas</option><option>25 personas</option><option>30 personas</option><option>40 personas</option></select></div><div class="field"><label for="cakeSponge">Bizcocho</label><select id="cakeSponge"><option value="">Selecciona bizcocho</option><option>Vainilla con naranja</option><option>Naranja y amapola</option><option>Marmolado</option><option>Chocolate</option><option>Red velvet</option><option>Zanahoria</option><option>Vainilla con nueces</option><option>Vainilla chips</option></select></div><div class="field full"><label>Rellenos (elige hasta dos)</label><div class="cake-fillings" id="cakeFillings"></div></div><div class="field"><label for="cakeCover">Cobertura</label><select id="cakeCover"><option value="">Selecciona cobertura</option><option>Buttercream</option><option>Buttercream de merengue suizo</option><option>Chantilly</option></select></div><div class="field"><label for="cakeTopper">¿Deseas topper?</label><select id="cakeTopper"><option>Sí</option><option>No</option></select></div><div class="field full"><label for="cakeNotes">Temática / decoración</label><textarea id="cakeNotes" placeholder="Temática, personaje, colores, estilo o referencias."></textarea></div><p class="cake-note">Algunos sabores o adicionales pueden modificar el valor final.</p><button class="btn" id="cakeSubmit" type="button">Consultar torta personalizada por WhatsApp</button></div>
           </article>
           <article class="feature-card">
             <span class="kicker">Formato definido</span><h3>Tortas clásicas</h3>
@@ -394,8 +386,8 @@
             <div class="field"><label for="eventDate">Fecha del evento</label><input id="eventDate" type="date"></div>
             <div class="field"><label for="category">Categoría</label><select id="category"></select></div>
             <div class="field"><label for="product">Producto</label><select id="product"></select></div>
-            <div class="field"><label for="quantity">Cantidad</label><input id="quantity" type="number" min="1" value="1"></div>
-            <div class="field"><label for="people">Cantidad de personas</label><input id="people" type="number" min="1" placeholder="Opcional"></div>
+            <div class="field" id="quantityField"><label for="quantity">Cantidad</label><input id="quantity" type="number" min="1" value="1"></div>
+            <div class="field" id="peopleField"><label for="people">Cantidad de personas</label><input id="people" type="number" min="1" placeholder="Opcional"></div>
             <div class="field"><label for="fulfillment">¿Cómo prefieres recibirlo?</label><select id="fulfillment"><option value="Retiro en Los Tulipanes 5037, Valle Volcanes, Puerto Montt">Retiro en Los Tulipanes 5037, Valle Volcanes, Puerto Montt</option><option value="Delivery">Delivery</option></select></div>
             <div class="field full"><label for="notes">Detalles o sabores</label><textarea id="notes" placeholder="Ej.: temática, sabores, cambios en el box o cualquier consulta."></textarea></div>
             <button class="btn order-submit" type="submit">Enviar solicitud por WhatsApp</button>
@@ -423,117 +415,30 @@
   <dialog class="image-dialog" id="imageDialog" aria-label="Imagen ampliada"><div class="image-dialog__content"><button class="image-dialog__close" id="closeImageDialog" type="button" aria-label="Cerrar imagen">×</button><img id="imageDialogImage" src="" alt=""></div></dialog>
 
   <script>
-    const products = {"Cóctel salado": ["Tequeños", "Pastelitos", "Empanadas", "Arepitas", "Cachapitas", "Bolitas de carne", "Serpentinas", "Brocheta de pollo", "Brocheta de vacuno", "Mini pizzas", "Mini hamburguesas", "Mini completos", "Mini hot dogs", "Tamales"], "Box mixtos": ["Mix 50 unidades", "Mix 70 unidades", "Mix 100 unidades", "Mix 150 unidades", "Mix 200 unidades"], "Mini dulces": ["Mini shots · 24 unidades", "Mini dulces · 50 unidades"], "Tortas personalizadas": ["Torta para 10 personas", "Torta para 15 personas", "Torta para 20 personas", "Torta para 25 personas", "Torta para 30 personas", "Torta para 40 personas"], "Tortas clásicas": ["Torta tres leches", "Torta de piña", "Torta imperial", "Tarta de frutas", "Quesillo", "Quesipiña", "Beso de ángel", "Chocobrownie", "Chocomoka"]};
-    const category = document.getElementById('category');
-    const product = document.getElementById('product');
-    const toast = document.getElementById('toast');
-    const selectedItems = [];
-    const orderStatus = document.getElementById('orderStatus');
-    const orderStatusText = document.getElementById('orderStatusText');
-    const orderSummary = document.getElementById('orderSummary');
-    const orderSummaryTitle = document.getElementById('orderSummaryTitle');
-    const orderSummaryItems = document.getElementById('orderSummaryItems');
+    const products = {"Cóctel salado": ["Tequeños", "Pastelitos", "Empanadas", "Arepitas", "Cachapitas", "Bolitas de carne", "Serpentinas", "Brocheta de pollo", "Brocheta de vacuno", "Mini pizzas", "Mini hamburguesas", "Mini completos", "Mini hot dogs", "Tamales"], "Box mixtos": ["Mix 50 unidades", "Mix 70 unidades", "Mix 100 unidades", "Mix 150 unidades", "Mix 200 unidades"], "Mini dulces": ["Mini shots · 24 unidades", "Mini dulces · 50 unidades"], "Tortas clásicas": ["Torta tres leches", "Torta de piña", "Torta imperial", "Tarta de frutas", "Quesillo", "Quesipiña", "Beso de ángel", "Chocobrownie", "Chocomoka"]};
+    const category = document.getElementById('category'), product = document.getElementById('product'), toast = document.getElementById('toast');
+    const selectedItems = [], orderStatus = document.getElementById('orderStatus'), orderStatusText = document.getElementById('orderStatusText'), orderSummary = document.getElementById('orderSummary'), orderSummaryTitle = document.getElementById('orderSummaryTitle'), orderSummaryItems = document.getElementById('orderSummaryItems');
+    const quantityField = document.getElementById('quantityField'), peopleField = document.getElementById('peopleField'), eventDate = document.getElementById('eventDate');
+    eventDate.min = new Date().toISOString().split('T')[0];
+    const fillings = ["Chocolate","Bariloche","Manjar con nuez","Chocolate blanco","Crema de Oreo","Crema de café","Trufa","Pannacota","Chocolate con naranja","Manjar o chantilly con frambuesa","Frosting de queso crema","Crema pastelera","Maracuyá","Ganache de fresa","Crema bombón","Manjar con fresas","Frutas con crema pastelera"];
+    document.getElementById('cakeFillings').innerHTML = fillings.map((x,i) => `<label><input type="checkbox" value="${x}" name="cakeFilling"> ${x}</label>`).join('');
+    document.querySelectorAll('[name="cakeFilling"]').forEach(input => input.addEventListener('change', () => { if (document.querySelectorAll('[name="cakeFilling"]:checked').length > 2) { input.checked = false; toast.textContent = 'Puedes elegir hasta dos rellenos'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800); } }));
+    function money(n) { return '$' + n.toLocaleString('es-CL'); }
+    function groupedItems() { const map = new Map(); selectedItems.forEach(item => { const key = item.category + '|' + item.product; const row = map.get(key) || {...item, count:0}; row.count++; map.set(key,row); }); return [...map.values()]; }
+    function hasCake() { return selectedItems.some(item => item.category.startsWith('Tortas')) || category.value.startsWith('Tortas'); }
+    function setOrderMode() { const hasSelection = selectedItems.length > 0; category.required = !hasSelection; product.required = !hasSelection; document.getElementById('category').closest('.field').classList.toggle('is-hidden', hasSelection); document.getElementById('product').closest('.field').classList.toggle('is-hidden', hasSelection); quantityField.classList.toggle('is-hidden', hasSelection); peopleField.classList.toggle('is-hidden', !hasCake()); }
+    function updateOrderSummary() { const rows = groupedItems(), total = rows.reduce((sum,row) => sum + (row.price || 0) * row.count,0); const hasSelection = rows.length > 0; orderStatus.classList.toggle('show', hasSelection); orderSummary.classList.toggle('show', hasSelection); orderStatusText.textContent = selectedItems.length + (selectedItems.length === 1 ? ' producto agregado' : ' productos agregados'); orderSummaryTitle.textContent = 'Tu selección: ' + selectedItems.length + (selectedItems.length === 1 ? ' producto agregado' : ' productos agregados'); orderSummaryItems.innerHTML = rows.map(row => `<li>${row.display}${row.count > 1 ? ' × ' + row.count + ' = ' + money(row.price * row.count) : ''}</li>`).join('') + (total ? `<li><strong>Total productos: ${money(total)}</strong></li>` : ''); setOrderMode(); }
+    function fillCategories() { const labels = {"Box mixtos":"Box mixtos"}; category.innerHTML = "<option value=\"\">Selecciona una categoría</option>" + Object.keys(products).map(x => "<option value=\"" + x + "\">" + (labels[x] || x) + "</option>").join(""); fillProducts(); }
+    function fillProducts(selected) { const list = products[category.value] || []; product.innerHTML = '<option value="">Selecciona un producto</option>' + list.map(x => `<option value="${x}">${x}</option>`).join(''); if (selected && list.includes(selected)) product.value = selected; }
+    category.addEventListener('change', () => { fillProducts(); setOrderMode(); }); fillCategories(); setOrderMode();
+    document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', () => { const card = btn.closest('.menu-card, .feature-card'); const priceText = card.querySelector('.price, .price-big')?.textContent.trim() || ''; const price = Number(priceText.replace(/\D/g,'')) || 0; const title = card.querySelector('h3').textContent.trim(); const productName = btn.dataset.product.replace(' · ', ' — '); const presentation = btn.dataset.category === 'Cóctel salado' ? (card.querySelector('p')?.textContent.trim() || '') : ''; const display = (btn.dataset.category === 'Cóctel salado' ? 'Bandeja de ' : '') + title + (presentation ? ' — ' + presentation : productName !== title ? ' — ' + productName : '') + (price ? ' — ' + priceText : ''); selectedItems.push({category:btn.dataset.category, product:btn.dataset.product, display, price}); updateOrderSummary(); toast.textContent='Producto agregado al pedido'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'),1800); }));
+    document.querySelectorAll('.quick-category').forEach(link => link.addEventListener('click', event => { event.preventDefault(); document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'}); }));
+    const imageDialog = document.getElementById('imageDialog'), imageDialogImage = document.getElementById('imageDialogImage'); document.querySelectorAll('.gallery-item').forEach(item => item.addEventListener('click', () => { imageDialogImage.src=item.dataset.full; imageDialogImage.alt=item.querySelector('img').alt; imageDialog.showModal(); })); document.getElementById('closeImageDialog').addEventListener('click',()=>imageDialog.close()); imageDialog.addEventListener('click',event=>{if(event.target===imageDialog) imageDialog.close();});
+    const search=document.getElementById('menuSearch'), cards=[...document.querySelectorAll('#saltyGrid .searchable')], emptyState=document.getElementById('emptyState'); search.addEventListener('input',()=>{const term=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const match=card.dataset.search.includes(term);card.style.display=match?'':'none';if(match)visible++;});emptyState.style.display=visible?'none':'block';});
+    document.getElementById('orderForm').addEventListener('submit', e => { e.preventDefault(); if (!selectedItems.length && (!category.value || !product.value)) { category.required=true; product.required=true; (category.value?product:category).focus(); return; } const rows=groupedItems(), total=rows.reduce((sum,row)=>sum+(row.price||0)*row.count,0), cake=hasCake(), name=document.getElementById('customerName').value.trim(), date=eventDate.value, fulfillment=document.getElementById('fulfillment').value, notes=document.getElementById('notes').value.trim(); const manual = !rows.length ? [{display:category.value+' — '+product.value,price:0,count:1}] : rows; const lines=[total?'Hola Sabor de Elis, quisiera realizar el siguiente pedido:':'Hola Sabor de Elis, quisiera solicitar una cotización:','',`Nombre: ${name||'No indicado'}`,'','Productos:',...manual.map(row=>'• '+row.display+(row.count>1?' × '+row.count:'')),...(total?[``,`Total productos: ${money(total)}`]:[]),'',`Fecha del evento: ${date||'Por confirmar'}`,'',`Entrega: ${fulfillment}`,...(cake?[`Cantidad de personas: ${document.getElementById('people').value.trim()||'Por confirmar'}`]:[]),'',`Detalles: ${notes||'Sin detalles adicionales'}`]; window.open('https://wa.me/56938797384?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener'); });
+    document.getElementById('cakeSubmit').addEventListener('click', () => { const size=document.getElementById('cakeSize').value, sponge=document.getElementById('cakeSponge').value, cover=document.getElementById('cakeCover').value, topper=document.getElementById('cakeTopper').value, cakeNotes=document.getElementById('cakeNotes').value.trim(), chosen=[...document.querySelectorAll('[name="cakeFilling"]:checked')].map(x=>x.value); if(!size||!sponge||!cover||!chosen.length){ toast.textContent='Completa tamaño, bizcocho, rellenos y cobertura'; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1800); return; } const f=document.getElementById('fulfillment').value, name=document.getElementById('customerName').value.trim(), date=eventDate.value; const lines=['Hola Sabor de Elis, quisiera consultar por una torta personalizada:','',`Nombre: ${name||'No indicado'}`,`Tamaño: ${size}`,`Bizcocho: ${sponge}`,'','Rellenos:',...chosen.map(x=>'• '+x),'',`Cobertura: ${cover}`,`Topper: ${topper}`,'',`Fecha del evento: ${date||'Por confirmar'}`,'',`Entrega: ${f}`,...(f.startsWith('Retiro')?['Dirección de retiro:','Los Tulipanes 5037, Valle Volcanes, Puerto Montt']:[]),'',`Temática / detalles: ${cakeNotes||'Sin detalles adicionales'}`,'','Solicito confirmar valor final y disponibilidad.']; window.open('https://wa.me/56938797384?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener'); });
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-    function updateOrderSummary() {
-      const total = selectedItems.length;
-      const label = total + " " + (total === 1 ? "producto agregado" : "productos agregados");
-      const hasSelection = total > 0;
-      category.required = !hasSelection;
-      product.required = !hasSelection;
-      orderStatusText.textContent = label;
-      orderStatus.classList.toggle("show", hasSelection);
-      orderSummary.classList.toggle("show", hasSelection);
-      orderSummaryTitle.textContent = "Tu selección: " + label;
-      orderSummaryItems.innerHTML = selectedItems.map(item => "<li>" + item.category + ": " + item.product + "</li>").join("");
-    }
-
-    function fillCategories() {
-      category.innerHTML = "<option value=\"\">Selecciona una categoría</option>" + Object.keys(products).map(x => "<option value=\"" + x + "\">" + x + "</option>").join("");
-      fillProducts();
-    }
-    function fillProducts(selected) {
-      const list = products[category.value] || [];
-      product.innerHTML = "<option value=\"\">Selecciona un producto</option>" + list.map(x => "<option value=\"" + x + "\">" + x + "</option>").join("");
-      if (selected && list.includes(selected)) product.value = selected;
-    }
-    category.addEventListener('change', () => fillProducts());
-    fillCategories();
-    updateOrderSummary();
-
-    document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', () => {
-      category.value = btn.dataset.category;
-      fillProducts(btn.dataset.product);
-      selectedItems.push({category: btn.dataset.category, product: btn.dataset.product});
-      updateOrderSummary();
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 1800);
-    }));
-
-    document.querySelectorAll(".quick-category").forEach(link => link.addEventListener("click", event => {
-      event.preventDefault();
-      const categoryMap = {"#tortas": ["Tortas personalizadas", "Torta para 20 personas"], "#salado": ["Cóctel salado", "Tequeños"], "#boxes": ["Box mixtos", "Mix 50 unidades"], "#dulces": ["Mini dulces", "Mini shots · 24 unidades"]};
-      const selection = categoryMap[link.getAttribute("href")];
-      if (selection) { category.value = selection[0]; fillProducts(selection[1]); }
-      document.querySelector(link.getAttribute("href")).scrollIntoView({behavior:"smooth"});
-    }));
-
-    const imageDialog = document.getElementById("imageDialog");
-    const imageDialogImage = document.getElementById("imageDialogImage");
-    document.querySelectorAll(".gallery-item").forEach(item => item.addEventListener("click", () => {
-      imageDialogImage.src = item.dataset.full;
-      imageDialogImage.alt = item.querySelector("img").alt;
-      imageDialog.showModal();
-    }));
-    document.getElementById("closeImageDialog").addEventListener("click", () => imageDialog.close());
-    imageDialog.addEventListener("click", event => { if (event.target === imageDialog) imageDialog.close(); });
-
-    const search = document.getElementById('menuSearch');
-    const cards = [...document.querySelectorAll('#saltyGrid .searchable')];
-    const emptyState = document.getElementById('emptyState');
-    search.addEventListener('input', () => {
-      const term = search.value.trim().toLowerCase();
-      let visible = 0;
-      cards.forEach(card => {
-        const match = card.dataset.search.includes(term);
-        card.style.display = match ? '' : 'none';
-        if (match) visible++;
-      });
-      emptyState.style.display = visible ? 'none' : 'block';
-    });
-
-    document.getElementById('orderForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const name = document.getElementById('customerName').value.trim();
-      const date = document.getElementById('eventDate').value;
-      const qty = document.getElementById('quantity').value || '1';
-      const people = document.getElementById('people').value.trim();
-      const fulfillment = document.getElementById('fulfillment').value;
-      const notes = document.getElementById('notes').value.trim();
-      if (!selectedItems.length && (!category.value || !product.value)) {
-        category.required = true;
-        product.required = true;
-        (category.value ? product : category).focus();
-        return;
-      }
-      const selectedProducts = [...new Map(selectedItems.map(item => [`${item.category} — ${item.product}`, item])).values()];
-      const productLines = selectedProducts.length
-        ? [`Productos seleccionados: ${selectedProducts.map(item => `${item.category} — ${item.product}`).join('; ')}`]
-        : [`Categoría: ${category.value}`, `Producto: ${product.value}`];
-      const lines = [
-        'Hola Sabor de Elis, quisiera solicitar una cotización:',
-        '',
-        `Nombre: ${name || 'No indicado'}`,
-        ...productLines,
-        `Cantidad: ${qty}`,
-        `Fecha del evento: ${date || 'Por confirmar'}`,
-        "Cantidad de personas: " + (people || "Por confirmar"),
-        "Entrega: " + fulfillment,
-        `Detalles: ${notes || 'Sin detalles adicionales'}`
-      ];
-      window.open('https://wa.me/56938797384?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
