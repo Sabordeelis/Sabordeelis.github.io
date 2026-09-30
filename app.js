@@ -27,18 +27,41 @@
     toast.classList.add('show');
     window.setTimeout(() => toast.classList.remove('show'), 2000);
   };
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+  const placeholderMarkup = (alt, className = '') => `<span class="image-placeholder ${className}" role="img" aria-label="Sin fotografía: ${escapeHtml(alt)}"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10h32v28H8zM13 32l8-9 6 6 4-4 5 7M16 18h.01" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sin fotografía</span></span>`;
+  const renderImage = (source, alt, className = '', imagePosition = '') => {
+    const path = typeof source === 'string' ? source.trim() : '';
+    const position = typeof imagePosition === 'string' && imagePosition.trim() ? ` style="object-position:${escapeHtml(imagePosition)}"` : '';
+    return path ? `<img class="${className}" src="${escapeHtml(path)}" alt="${escapeHtml(alt)}" loading="lazy" data-image-source${position}>` : placeholderMarkup(alt, className);
+  };
+  const applyImageFallbacks = (root = document) => {
+    root.querySelectorAll('img[data-image-source]').forEach((image) => {
+      const replace = () => {
+        if (image.dataset.imageFallback) return;
+        image.dataset.imageFallback = 'true';
+        image.onerror = null;
+        const template = document.createElement('template');
+        template.innerHTML = placeholderMarkup(image.alt, image.className);
+        image.replaceWith(template.content.firstElementChild);
+      };
+      image.onerror = replace;
+      if (image.complete && image.naturalWidth === 0) replace();
+    });
+  };
 
   const card = (product, options = {}) => {
     const active = isActiveOffer(product);
     const price = currentPrice(product);
-    const photo = product.image ? `<img src="${product.image}" alt="${product.name}" loading="lazy">` : '✦';
+    const photo = renderImage(product.image, product.name, 'product-image', product.imagePosition);
     const badge = options.showBadge && product.badge ? `<span class="product-badge">${product.badge}</span>` : '';
     const priceMarkup = price === null || price === undefined
       ? 'Consultar valor'
       : active
         ? `<s>${money(product.price)}</s> <strong>${money(price)}</strong><small class="offer-label">🔥 Oferta por tiempo limitado</small>`
         : money(price);
-    return `<article class="card${options.featured ? ' featured-card' : ''}"><div class="photo">${photo}${badge}</div><div><h3>${product.name}</h3><span class="qty">${product.quantity || 'Consultar valor'}</span><p>${product.description}</p><span class="price">${priceMarkup}</span><button class="add" type="button" data-sabor-add="${product.id}">${price === null || price === undefined ? 'Consultar' : 'Agregar'}</button></div></article>`;
+    const featuredPrice = options.featured ? `<span class="featured-price">${price === null || price === undefined ? 'Valor por confirmar' : `${active ? 'Oferta · ' : ''}${money(price)}`}</span>` : '';
+    const media = options.classic && product.image ? `<button class="cake-image-button" type="button" data-cake-lightbox aria-label="Ampliar foto de ${escapeHtml(product.name)}">${photo}</button>` : photo;
+    return `<article class="card product-card${options.featured ? ' featured-card' : ''}${options.classic ? ' classic-cake-card' : ''}"><div class="photo product-media">${media}${badge}${featuredPrice}</div><div class="product-content"><h3>${product.name}</h3><span class="qty">${product.quantity || 'Consultar valor'}</span>${options.featured ? '' : `<p>${product.description}</p><span class="price">${priceMarkup}</span>`}<button class="add" type="button" data-sabor-add="${product.id}">${price === null || price === undefined ? 'Consultar' : 'Agregar'}</button></div></article>`;
   };
 
   const allProducts = () => [...data.products, ...data.classicCakes];
@@ -56,6 +79,9 @@
     document.querySelectorAll('[data-sabor-add]').forEach((button) => {
       button.onclick = () => addProduct(button.dataset.saborAdd);
     });
+    document.querySelectorAll('[data-cake-lightbox]').forEach((button) => {
+      button.onclick = () => openLightbox(button.querySelector('img'), button);
+    });
   };
   const renderFeatured = () => {
     const section = $('#featured');
@@ -68,14 +94,15 @@
     });
   };
   const renderProducts = () => {
-    const render = (selector, list) => { $(selector).innerHTML = list.filter((product) => product.available).map(card).join(''); };
+    const render = (selector, list, options = {}) => { $(selector).innerHTML = list.filter((product) => product.available).map((product) => card(product, options)).join(''); };
     render('#cocktail', data.products.filter((product) => product.category === 'Cóctel'));
     render('#boxes', data.products.filter((product) => product.category === 'Box'));
     render('#sweets', data.products.filter((product) => product.category === 'Dulces'));
-    render('#classics', data.classicCakes);
+    render('#classics', data.classicCakes, { classic: true });
     renderFeatured();
     renderOffers();
     bindProductButtons();
+    applyImageFallbacks();
   };
   const renderOffers = () => {
     const active = data.products.filter((product) => isActiveOffer(product));
@@ -92,6 +119,37 @@
     }
     section.innerHTML = `<div class="w"><div class="head"><span class="k">Disponibles ahora</span><h2>🔥 Ofertas de hoy</h2><p>Promociones vigentes por tiempo limitado.</p></div><div class="grid" id="offerGrid">${active.map(card).join('')}</div></div>`;
     bindProductButtons();
+  };
+
+  let lightboxTrigger = null;
+  const closeLightbox = () => {
+    if ($('#dialog').open) $('#dialog').close();
+  };
+  const openLightbox = (image, trigger) => {
+    if (!image || !image.naturalWidth) return;
+    lightboxTrigger = trigger;
+    $('#big').src = image.currentSrc || image.src;
+    $('#big').alt = image.alt;
+    $('#dialog').showModal();
+    document.body.classList.add('lightbox-open');
+    $('#close').focus();
+  };
+
+  const renderHero = () => {
+    $('#hero').innerHTML = renderImage(data.business.heroImage, 'Preparación real de Sabor de Elis', 'hero-media');
+    applyImageFallbacks($('#hero'));
+  };
+  const renderGallery = () => {
+    const gallery = $('#gallery');
+    const items = data.gallery.filter((item) => typeof item.src === 'string' && item.src.trim());
+    gallery.innerHTML = items.map((item, index) => `<button type="button" data-gallery-index="${index}">${renderImage(item.src, item.alt || 'Trabajo de Sabor de Elis', 'gallery-media')}</button>`).join('');
+    gallery.querySelectorAll('[data-gallery-index]').forEach((button) => {
+      button.onclick = () => {
+        const item = items[Number(button.dataset.galleryIndex)];
+        openLightbox(button.querySelector('img'), button);
+      };
+    });
+    applyImageFallbacks(gallery);
   };
 
   const renderCart = () => {
@@ -195,7 +253,16 @@
   const style = document.createElement('style');
   style.textContent = '.price s{color:var(--m);font-weight:500;margin-right:4px}.price strong{color:var(--a)}.price .offer-label{display:block;color:#b8493d;font-size:.76rem;margin-top:4px}.pending{color:#f4ded7}.offers-section{padding-block:48px}';
   document.head.append(style);
-  window.saborOrder = { isActiveOffer, currentPrice, hasPendingItems, buildWhatsAppMessage, state, renderProducts, renderCart, renderFeatured, addProduct };
+  $('#close').onclick = closeLightbox;
+  $('#dialog').onclick = (event) => { if (event.target === $('#dialog')) closeLightbox(); };
+  $('#dialog').addEventListener('close', () => {
+    document.body.classList.remove('lightbox-open');
+    if (lightboxTrigger) lightboxTrigger.focus();
+    lightboxTrigger = null;
+  });
+  window.saborOrder = { isActiveOffer, currentPrice, hasPendingItems, buildWhatsAppMessage, state, renderProducts, renderCart, renderFeatured, addProduct, renderImage, applyImageFallbacks, renderGallery };
+  renderHero();
+  renderGallery();
   renderProducts();
   renderCart();
 })();
