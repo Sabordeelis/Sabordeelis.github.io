@@ -28,30 +28,43 @@
     window.setTimeout(() => toast.classList.remove('show'), 2000);
   };
 
-  const card = (product) => {
+  const card = (product, options = {}) => {
     const active = isActiveOffer(product);
     const price = currentPrice(product);
     const photo = product.image ? `<img src="${product.image}" alt="${product.name}" loading="lazy">` : '✦';
+    const badge = options.showBadge && product.badge ? `<span class="product-badge">${product.badge}</span>` : '';
     const priceMarkup = price === null || price === undefined
       ? 'Consultar valor'
       : active
         ? `<s>${money(product.price)}</s> <strong>${money(price)}</strong><small class="offer-label">🔥 Oferta por tiempo limitado</small>`
         : money(price);
-    return `<article class="card"><div class="photo">${photo}</div><div><h3>${product.name}</h3><span class="qty">${product.quantity || 'Consultar valor'}</span><p>${product.description}</p><span class="price">${priceMarkup}</span><button class="add" type="button" data-sabor-add="${product.id}">${price === null || price === undefined ? 'Consultar' : 'Agregar'}</button></div></article>`;
+    return `<article class="card${options.featured ? ' featured-card' : ''}"><div class="photo">${photo}${badge}</div><div><h3>${product.name}</h3><span class="qty">${product.quantity || 'Consultar valor'}</span><p>${product.description}</p><span class="price">${priceMarkup}</span><button class="add" type="button" data-sabor-add="${product.id}">${price === null || price === undefined ? 'Consultar' : 'Agregar'}</button></div></article>`;
   };
 
   const allProducts = () => [...data.products, ...data.classicCakes];
+  const addProduct = (id) => {
+    const product = allProducts().find((item) => item.id === id);
+    if (!product) return;
+    const price = currentPrice(product);
+    const existing = state.items.find((item) => item.id === product.id && item.price === price);
+    if (existing) existing.qty += 1;
+    else state.items.push({ ...product, price, qty: 1 });
+    renderCart();
+    showToast(`${product.name} agregado al pedido`);
+  };
   const bindProductButtons = () => {
     document.querySelectorAll('[data-sabor-add]').forEach((button) => {
-      button.onclick = () => {
-        const product = allProducts().find((item) => item.id === button.dataset.saborAdd);
-        const price = currentPrice(product);
-        const existing = state.items.find((item) => item.id === product.id && item.price === price);
-        if (existing) existing.qty += 1;
-        else state.items.push({ ...product, price, qty: 1 });
-        renderCart();
-        showToast(`${product.name} agregado al pedido`);
-      };
+      button.onclick = () => addProduct(button.dataset.saborAdd);
+    });
+  };
+  const renderFeatured = () => {
+    const section = $('#featured');
+    const featured = data.products.filter((product) => product.available && product.featured);
+    if (!featured.length) { section.hidden = true; return; }
+    section.hidden = false;
+    $('#featuredTrack').innerHTML = featured.map((product) => card(product, { featured: true, showBadge: true })).join('');
+    section.querySelectorAll('[data-carousel]').forEach((button) => {
+      button.onclick = () => $('#featuredTrack').scrollBy({ left: Number(button.dataset.carousel) * $('#featuredTrack').clientWidth * .82, behavior: 'smooth' });
     });
   };
   const renderProducts = () => {
@@ -60,8 +73,9 @@
     render('#boxes', data.products.filter((product) => product.category === 'Box'));
     render('#sweets', data.products.filter((product) => product.category === 'Dulces'));
     render('#classics', data.classicCakes);
-    bindProductButtons();
+    renderFeatured();
     renderOffers();
+    bindProductButtons();
   };
   const renderOffers = () => {
     const active = data.products.filter((product) => isActiveOffer(product));
@@ -149,6 +163,26 @@
     location.hash = 'pedido';
     showToast('Torta personalizada agregada al pedido');
   };
+  const updateFulfillment = () => {
+    const isDelivery = $('#delivery').value === 'Delivery';
+    $('#addressbox').hidden = !isDelivery;
+    $('#address').required = isDelivery;
+    document.querySelectorAll('[data-fulfillment]').forEach((button) => {
+      button.classList.toggle('active', button.dataset.fulfillment === $('#delivery').value);
+    });
+  };
+  document.querySelectorAll('[data-fulfillment]').forEach((button) => {
+    button.onclick = () => { $('#delivery').value = button.dataset.fulfillment; updateFulfillment(); };
+  });
+  $('#delivery').onchange = updateFulfillment;
+  updateFulfillment();
+  $('#continueOrder').onclick = () => {
+    if (!state.items.length && !state.customCake) return showToast('Agrega al menos un producto al pedido');
+    $('#reviewStep').hidden = true;
+    $('#checkout').hidden = false;
+    $('#checkout').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   $('#checkout').onsubmit = (event) => {
     event.preventDefault();
     if (!state.items.length && !state.customCake) return showToast('Agrega al menos un producto al pedido');
@@ -161,7 +195,7 @@
   const style = document.createElement('style');
   style.textContent = '.price s{color:var(--m);font-weight:500;margin-right:4px}.price strong{color:var(--a)}.price .offer-label{display:block;color:#b8493d;font-size:.76rem;margin-top:4px}.pending{color:#f4ded7}.offers-section{padding-block:48px}';
   document.head.append(style);
-  window.saborOrder = { isActiveOffer, currentPrice, hasPendingItems, buildWhatsAppMessage, state, renderProducts, renderCart };
+  window.saborOrder = { isActiveOffer, currentPrice, hasPendingItems, buildWhatsAppMessage, state, renderProducts, renderCart, renderFeatured, addProduct };
   renderProducts();
   renderCart();
 })();
