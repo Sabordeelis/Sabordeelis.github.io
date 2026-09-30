@@ -4,6 +4,7 @@
   const state = { items: [], customCake: null };
   const $ = (selector) => document.querySelector(selector);
   const money = (value) => `$${Number(value).toLocaleString('es-CL')}`;
+  const emoji = { wave: String.fromCharCode(0xD83D, 0xDC4B), receipt: String.fromCharCode(0xD83E, 0xDDFE), person: String.fromCharCode(0xD83D, 0xDC64), calendar: String.fromCharCode(0xD83D, 0xDCC5), cart: String.fromCharCode(0xD83D, 0xDED2), money: String.fromCharCode(0xD83D, 0xDCB0), delivery: String.fromCharCode(0xD83D, 0xDE9A), note: String.fromCharCode(0xD83D, 0xDCDD), smile: String.fromCharCode(0xD83D, 0xDE0A) };
 
   // offerStart y offerEnd deben ser ISO 8601 con zona horaria, por ejemplo:
   // 2026-10-01T00:00:00-03:00
@@ -116,9 +117,9 @@
     const delivery = $('#delivery').value;
     const date = new Date(`${$('#date').value}T00:00`).toLocaleDateString('es-CL');
     const order = String(Number(localStorage.getItem('sabor-order') || 0) + 1).padStart(3, '0');
-    const lines = ['Hola 👋 Quiero realizar un pedido en Sabor de Elis.', '', `🧾 *Pedido #${order}*`, '', '👤 *Cliente*', `Nombre: ${$('#name').value.trim()}`, '', '📅 *Fecha requerida*', `Fecha: ${date}`, `Hora: ${$('#time').value}`, ''];
+    const lines = [`Hola ${emoji.wave} Quiero realizar un pedido en Sabor de Elis.`, '', `${emoji.receipt} *Pedido #${order}*`, '', `${emoji.person} *Cliente*`, `Nombre: ${$('#name').value.trim()}`, '', `${emoji.calendar} *Fecha requerida*`, `Fecha: ${date}`, `Hora: ${$('#time').value}`, ''];
     if (state.items.length) {
-      lines.push('🛒 *PRODUCTOS*', '');
+      lines.push(`${emoji.cart} *PRODUCTOS*`, '');
       state.items.forEach((item) => {
         lines.push(`• ${item.name}`, `  Cantidad: ${item.qty}`);
         if (Number.isFinite(item.price)) lines.push(`  ${item.quantity || 'Unidad'} × ${money(item.price)}`, `  ${money(item.price * item.qty)}`);
@@ -130,11 +131,11 @@
       const cake = state.customCake;
       lines.push('🎂 *TORTA PERSONALIZADA*', '', `Tamaño: ${cake.size}`, `Bizcocho: ${cake.sponge}`, `Relleno 1: ${cake.fill[0]}`, ...(cake.fill[1] ? [`Relleno 2: ${cake.fill[1]}`] : []), `Cobertura: ${cake.cover}`, `Topper: ${cake.topper}`, ...(cake.theme ? [`Temática: ${cake.theme}`] : []), 'Valor: Por confirmar', '');
     }
-    lines.push('💰 *RESUMEN*', '', `${pending.length ? 'Total confirmado' : 'Total del pedido'}: ${money(confirmedTotal())}`);
+    lines.push(`${emoji.money} *RESUMEN*`, '', `${pending.length ? 'Total confirmado' : 'Total del pedido'}: ${money(confirmedTotal())}`);
     if (pending.length) lines.push('', 'Valores por confirmar:', ...pending.map((item) => `• ${item.name}`));
-    lines.push('', '🚚 *ENTREGA*', '', `Modalidad: ${delivery}`, `Dirección: ${delivery === 'Delivery' ? $('#address').value.trim() : data.business.pickupAddress}`);
-    if ($('#notes').value.trim()) lines.push('', '📝 *OBSERVACIONES*', '', $('#notes').value.trim());
-    lines.push('', 'Gracias 😊');
+    lines.push('', `${emoji.delivery} *ENTREGA*`, '', `Modalidad: ${delivery}`, `Dirección: ${delivery === 'Delivery' ? $('#address').value.trim() : data.business.pickupAddress}`);
+    if ($('#notes').value.trim()) lines.push('', `${emoji.note} *OBSERVACIONES*`, '', $('#notes').value.trim());
+    lines.push('', `Gracias ${emoji.smile}`);
     return { order, text: lines.join('\n') };
   };
 
@@ -154,7 +155,7 @@
     if (!event.currentTarget.reportValidity()) return;
     const message = buildWhatsAppMessage(event.currentTarget);
     localStorage.setItem('sabor-order', message.order);
-    window.open(`https://wa.me/${data.business.whatsapp}?text=${encodeURIComponent(message.text)}`, '_blank', 'noopener');
+    window.open(`https://api.whatsapp.com/send?phone=${data.business.whatsapp}&text=${encodeURIComponent(message.text)}`, '_blank', 'noopener');
   };
 
   const style = document.createElement('style');
